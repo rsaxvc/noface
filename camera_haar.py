@@ -15,7 +15,7 @@ else:
 
 while rval:
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-	faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+	faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 	for (x,y,w,h) in faces:
 		print "face@",x,y
 		cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
@@ -27,7 +27,7 @@ while rval:
 
 	cv2.imshow("preview", frame)
 	rval, frame = vc.read()
-	key = cv2.waitKey(20)
+	key = cv2.waitKey(1)
 	if key == 27: # exit on ESC
 		break
 cv2.destroyWindow("preview")
