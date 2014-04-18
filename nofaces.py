@@ -6,6 +6,10 @@ eye_cascade = cv2.CascadeClassifier('/usr/share/opencv/haarcascades/haarcascade_
 cv2.namedWindow("preview")
 vc = cv2.VideoCapture(0)
 
+img_circle = cv2.imread("laugh/circle.png", cv2.CV_LOAD_IMAGE_UNCHANGED)
+img_face   = cv2.imread("laugh/face.png", cv2.CV_LOAD_IMAGE_UNCHANGED)
+img_text   = cv2.imread("laugh/text.png", cv2.CV_LOAD_IMAGE_UNCHANGED)
+
 if vc.isOpened(): # try to get the first frame
 	rval, frame = vc.read()
 	print "camera"
