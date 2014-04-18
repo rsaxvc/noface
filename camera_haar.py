@@ -1,4 +1,5 @@
 import cv2
+import time
 
 face_cascade = cv2.CascadeClassifier('/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('/usr/share/opencv/haarcascades/haarcascade_eye.xml')
@@ -12,6 +13,9 @@ if vc.isOpened(): # try to get the first frame
 else:
 	rval = False
 	print "nocamera"
+
+frames = 0
+start_time = time.time()
 
 while rval:
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -30,4 +34,8 @@ while rval:
 	key = cv2.waitKey(1)
 	if key == 27: # exit on ESC
 		break
+
+	frames += 1
+	if( frames % 15 == 0):
+		print "AVG FPS:",(frames/(time.time()-start_time))
 cv2.destroyWindow("preview")
